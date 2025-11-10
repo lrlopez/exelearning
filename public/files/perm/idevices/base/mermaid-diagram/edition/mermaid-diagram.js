@@ -1,17 +1,16 @@
 var $exeDevice = {
-
     // ::: i18n :::
     // We use eXe's _function
     // iDevice name
     name: _('Mermaid diagram'),
     // Textarea
-    textareaTitle: _("Mermaid code"),
+    textareaTitle: _('Mermaid code'),
 
     // ::: Identifiers of the fields used in the idevice :::
-    textareaId: "mermaidTextarea",
+    textareaId: 'mermaidTextarea',
 
     // ::: iDevice data :::
-    textArea: "",
+    textArea: '',
 
     // ::: iDevice default data :::
 
@@ -40,7 +39,9 @@ var $exeDevice = {
      * @return {String}
      */
     save: function () {
-        this.textarea = this.ideviceBody.querySelector(`#${this.textareaId}`).value;
+        this.textarea = this.ideviceBody.querySelector(
+            `#${this.textareaId}`
+        ).value;
         // Check if the values are valid
         if (this.checkFormValues()) {
             return this.getDataJson();
@@ -55,7 +56,12 @@ var $exeDevice = {
      */
     createForm: function () {
         let html = `<div id="mermaidForm">`;
-        html += this.createPlaintextTextareaHTML(this.textareaId, this.textareaTitle, '', "required");
+        html += this.createPlaintextTextareaHTML(
+            this.textareaId,
+            this.textareaTitle,
+            '',
+            'required'
+        );
         html += `</div>`;
         // [eXeLearning] - Set html to eXe idevice body
         this.ideviceBody.innerHTML = html;
@@ -71,8 +77,8 @@ var $exeDevice = {
      * @returns {Boolean}
      */
     checkFormValues: function () {
-        if (this.text === "") {
-            eXe.app.alert(_("Please write some text."));
+        if (this.text === '') {
+            eXe.app.alert(_('Please write some text.'));
             return false;
         }
         return true;
@@ -86,7 +92,7 @@ var $exeDevice = {
     getDataJson: function () {
         let data = {
             textarea: this.textarea,
-        }
+        };
         return data;
     },
 
@@ -97,7 +103,10 @@ var $exeDevice = {
     loadPreviousValues: function () {
         // Set form values in the value attribute
         let data = this.idevicePreviousData;
-        if (data.textarea) this.ideviceBody.querySelector(`#${this.textareaId}`).setAttribute("value", data.textarea);
+        if (data.textarea)
+            this.ideviceBody
+                .querySelector(`#${this.textareaId}`)
+                .setAttribute('value', data.textarea);
         // Set values to elements
         this.setValuesElement();
     },
@@ -108,16 +117,17 @@ var $exeDevice = {
      */
     setValuesElement: function () {
         // Textarea
-        let textareaElement = this.ideviceBody.querySelector(`#${this.textareaId}`);
-        textareaElement.value = textareaElement.getAttribute("value");
+        let textareaElement = this.ideviceBody.querySelector(
+            `#${this.textareaId}`
+        );
+        textareaElement.value = textareaElement.getAttribute('value');
     },
 
     /**
      * Set events to form
      *
      */
-    setBehaviour: function () {
-    },
+    setBehaviour: function () {},
 
     /*********************************************************
      * AUX FUNCTIONS
@@ -143,4 +153,4 @@ var $exeDevice = {
         <textarea id="${id}" class="form-control">${value}</textarea>
       </p>`;
     },
-}
+};

@@ -10,9 +10,8 @@
  */
 
 var $mermaiddiagram = {
-
-    ideviceClass: "mermaid-idevice",
-    textareaId: "diagramTextarea",
+    ideviceClass: 'mermaid-idevice',
+    textareaId: 'diagramTextarea',
 
     /**
      * eXe idevice engine
@@ -28,7 +27,7 @@ var $mermaiddiagram = {
      */
     renderView: function (data, accesibility, template) {
         // Generate html content from data values
-        let htmlContent = "";
+        let htmlContent = '';
         htmlContent += `<div class="${this.ideviceClass}">`;
         htmlContent += `<pre class="mermaid">`;
         htmlContent += data.textarea ?? '';
@@ -36,7 +35,7 @@ var $mermaiddiagram = {
         htmlContent += `</div>`;
         // Use template export/example.html
         // Insert the html content inside the template
-        let html = template.replace("{content}", htmlContent);
+        let html = template.replace('{content}', htmlContent);
 
         // Save html in database
         return html;
@@ -68,5 +67,4 @@ var $mermaiddiagram = {
     init: function (data, accesibility) {
         //
     },
-
-}
+};
